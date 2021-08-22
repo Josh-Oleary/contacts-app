@@ -8,7 +8,6 @@ import CreateContact from './CreateContact'
 class App extends Component {
   state = {
     contacts: [],
-    screen: 'list'
   }
   componentDidMount() {
     ContactsAPI.getAll()
@@ -30,13 +29,10 @@ class App extends Component {
   render() {
     return (
       <div>
-				<Route path='/' render ={()=> (
+				<Route exact path='/' render ={()=> (
 					<ListContacts
           	contacts={this.state.contacts}
           	onDeleteContact={this.removeContact}
-          	onNavigate={() => {
-            	this.setState(() => ({ screen: 'create'}))
-          }}
           />
 				)}
 				/>
